@@ -1,0 +1,36 @@
+# ── Video ────────────────────────────────────────────────────────────────────
+# Source footage and the exported demo clips are far too large for git
+# (several GB; GitHub rejects any single file over 100 MB). Keep them on a
+# shared drive, or move them to Git LFS if they must be versioned.
+videos/*
+!videos/*.py
+gcs/public/videos/
+*.mp4
+*.MP4
+*.mov
+*.MOV
+*.mkv
+
+# ── Node / Next / Electron ───────────────────────────────────────────────────
+node_modules/
+.next/
+out/
+dist/
+dist-electron/
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+.env*
+*.log
+.DS_Store
+Thumbs.db

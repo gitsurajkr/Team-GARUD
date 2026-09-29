@@ -1,0 +1,7 @@
+# air-unit — SITL multi-drone telemetry bridge
+# Reads MAVLink from N SITL drones on one UDP port, demuxes by system id,
+# and broadcasts per-drone telemetry to the GCS over WebSocket (JSON).
+pymavlink>=2.4.49
+websockets>=12.0
+PyYAML>=6.0
+pyserial>=3.5  # real drones over USB telemetry radios

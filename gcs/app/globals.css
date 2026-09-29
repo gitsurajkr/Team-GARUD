@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/*
+ * Garud AirMouse GCS — Control Room Dark Theme (Version 1 Design)
+ */
+:root {
+  --background: #000000;
+  --panel: #0a0a0a;
+  --panel-border: #1a1a1a;
+  --foreground: #ffffff;
+  --muted: #888888;
+  --accent-green: #22c55e;
+  --survivor-banner: #15803d;
+  --survivor-banner-hover: #16a34a;
+  --amber-border: #d97706;
+  --danger: #ef4444;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-panel: var(--panel);
+  --color-panel-border: var(--panel-border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent-green: var(--accent-green);
+  --color-survivor-banner: var(--survivor-banner);
+  --color-amber-border: var(--amber-border);
+  --color-danger: var(--danger);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/*
+ * Thin dark scrollbar for HUD panels. Without this the OS paints its default
+ * light scrollbar, which reads as a bright stripe on the translucent panels.
+ */
+.hud-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+.hud-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.hud-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.hud-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 3px;
+}
+.hud-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.hud-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Reposition confirm popup on the map — dark HUD panel instead of Leaflet's
+   default white bubble. */
+.gcs-confirm .leaflet-popup-content-wrapper,
+.gcs-confirm .leaflet-popup-tip {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+.gcs-confirm .leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+.gcs-confirm .leaflet-popup-content {
+  margin: 8px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.gcs-confirm-title {
+  font-weight: 700;
+  font-size: 12px;
+}
+.gcs-confirm-info {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+}
+.gcs-confirm-warn {
+  color: #fbbf24;
+  margin-top: 2px;
+}
+.gcs-confirm-btns {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.gcs-confirm-btns button {
+  flex: 1;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  cursor: pointer;
+}
+.gcs-confirm-btns button:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.gcs-confirm-btns .gcs-confirm-fly {
+  background: #0284c7;
+  border-color: #0ea5e9;
+  color: #fff;
+}
+.gcs-confirm-btns .gcs-confirm-fly:hover {
+  background: #0369a1;
+}
+.gcs-confirm-btns button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.gcs-confirm-btns kbd {
+  font-family: inherit;
+  font-size: 9px;
+  opacity: 0.6;
+  margin-left: 2px;
+}

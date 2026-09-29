@@ -1,0 +1,32 @@
+# air-unit runtime config. Edit and restart to apply.
+mavlink:
+  # Where to listen for MAVLink. Comma-separated list. There is NO drone limit —
+  # connect as many as you run. Each drone needs a unique system id
+  # (sim_vehicle.py --auto-sysid, or SYSID_THISMAV on real aircraft).
+  #   udpin:0.0.0.0:PORT        -> SITL drone(s); many can share one port
+  #   udpin:0.0.0.0:14550-14559 -> a port range (one SITL instance per port)
+  #   serial:auto:57600         -> REAL drones: every USB telemetry radio, found
+  #                                automatically, plugged in before or after start.
+  #                                One radio pair per drone; plug in as many as you fly.
+  #   serial:COM3:57600         -> one named radio (Windows COMx, /dev/ttyUSB0 on
+  #                                Linux). Retried until it appears. Use named ports
+  #                                instead of auto if other USB serial devices
+  #                                (Arduino, GPS…) are plugged in — auto opens them too.
+  # A pulled radio is reopened when it comes back. Each real aircraft MUST have
+  # its own SYSID_THISMAV (ArduPilot ships every board as 1): two radios carrying
+  # the same id are flagged SYSID CONFLICT and commands to it are blocked.
+  connection: "udpin:0.0.0.0:14550-14559,serial:auto:57600"
+  # Seconds without a message before a drone is marked disconnected (STALE).
+  timeout_sec: 3.0
+  # Seconds without a message before a drone is dropped from the roster
+  # entirely — so ghosts from previous SITL runs disappear on their own.
+  evict_sec: 15.0
+
+websocket:
+  host: "127.0.0.1"
+  port: 8765
+
+# How often (Hz) to push batched telemetry to connected GCS clients.
+telemetry_rate_hz: 10
+# How often (Hz) to push the drone roster + connection status.
+roster_rate_hz: 1

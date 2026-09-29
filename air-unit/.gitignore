@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.log
+b.err
+b.out
+.venv/
+venv/
